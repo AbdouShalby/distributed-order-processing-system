@@ -28,6 +28,7 @@ interface ProductRepositoryInterface
 
     /**
      * Get all products.
+     *
      * @return array[]
      */
     public function findAll(): array;

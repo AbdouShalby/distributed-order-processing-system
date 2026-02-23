@@ -104,7 +104,7 @@ class Order
     public function markAsCancelled(): void
     {
         $this->transitionTo(OrderStatus::CANCELLED);
-        $this->cancelledAt = new \DateTimeImmutable();
+        $this->cancelledAt = new \DateTimeImmutable;
     }
 
     // ─── Business Logic ───────────────────────────────

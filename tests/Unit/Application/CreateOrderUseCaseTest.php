@@ -25,8 +25,11 @@ class CreateOrderUseCaseTest extends TestCase
     use RefreshDatabase;
 
     private CreateOrderUseCase $useCase;
+
     private OrderRepositoryInterface $orderRepo;
+
     private ProductRepositoryInterface $productRepo;
+
     private DistributedLockInterface $lock;
 
     protected function setUp(): void

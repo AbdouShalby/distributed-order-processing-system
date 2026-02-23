@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Domain\Order\Enums\OrderStatus;
 use App\Infrastructure\Locking\InMemoryDistributedLock;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
@@ -73,8 +72,8 @@ class ConcurrencyTest extends TestCase
         $created = $responses->filter(fn ($r) => $r->status() === 201)->count();
         $existing = $responses->filter(fn ($r) => $r->status() === 200)->count();
 
-        $this->assertSame(1, $created, "Exactly 1 order should be created");
-        $this->assertSame(4, $existing, "4 should return existing order");
+        $this->assertSame(1, $created, 'Exactly 1 order should be created');
+        $this->assertSame(4, $existing, '4 should return existing order');
 
         // Only 1 order in DB
         $orderCount = DB::table('orders')->where('idempotency_key', 'same-key-test')->count();
@@ -112,7 +111,7 @@ class ConcurrencyTest extends TestCase
         $successCount = $responses->filter(fn ($r) => $r->status() === 200)->count();
 
         // All should succeed (idempotent — first cancels, rest return already-cancelled)
-        $this->assertSame(5, $successCount, "All cancel requests should succeed (idempotent)");
+        $this->assertSame(5, $successCount, 'All cancel requests should succeed (idempotent)');
 
         // Stock fully restored (50 - 2 + 2 = 50)
         $this->assertDatabaseHas('products', ['id' => 1, 'stock' => 50]);

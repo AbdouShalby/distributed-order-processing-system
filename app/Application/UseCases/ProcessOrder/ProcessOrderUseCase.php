@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Application\UseCases\ProcessOrder;
 
 use App\Domain\Order\Contracts\OrderRepositoryInterface;
-use App\Domain\Order\Enums\OrderStatus;
 use App\Domain\Payment\Contracts\PaymentGatewayInterface;
 use App\Infrastructure\Broadcasting\Events\OrderFailedEvent;
 use App\Infrastructure\Broadcasting\Events\OrderPaidEvent;

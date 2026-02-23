@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use App\Infrastructure\Locking\InMemoryDistributedLock;
+use App\Infrastructure\Queue\Jobs\ProcessOrderJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
-use App\Infrastructure\Queue\Jobs\ProcessOrderJob;
 use Tests\TestCase;
 
 class OrderLifecycleTest extends TestCase

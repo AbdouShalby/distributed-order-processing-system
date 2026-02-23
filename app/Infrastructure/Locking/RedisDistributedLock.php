@@ -20,8 +20,11 @@ use Illuminate\Support\Str;
 class RedisDistributedLock implements DistributedLockInterface
 {
     private const LOCK_PREFIX = 'inventory:product:';
+
     private const MAX_RETRIES = 5;
+
     private const BASE_DELAY_MS = 100;
+
     private const JITTER_FACTOR = 0.25;
 
     /**
@@ -56,7 +59,7 @@ class RedisDistributedLock implements DistributedLockInterface
 
         foreach ($sortedIds as $productId) {
             $acquired = $this->acquireWithRetry(
-                self::LOCK_PREFIX . $productId,
+                self::LOCK_PREFIX.$productId,
                 $ttlSeconds
             );
 

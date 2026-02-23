@@ -32,6 +32,7 @@ class InMemoryDistributedLock implements DistributedLockInterface
             if (isset(self::$locks[$key])) {
                 // Lock already held — release what we acquired and fail
                 $this->releaseAll();
+
                 return false;
             }
 

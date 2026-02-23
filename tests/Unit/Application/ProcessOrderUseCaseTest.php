@@ -23,7 +23,9 @@ class ProcessOrderUseCaseTest extends TestCase
     use RefreshDatabase;
 
     private ProcessOrderUseCase $useCase;
+
     private OrderRepositoryInterface $orderRepo;
+
     private PaymentGatewayInterface $paymentGateway;
 
     protected function setUp(): void

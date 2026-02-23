@@ -23,7 +23,9 @@ class CancelOrderUseCaseTest extends TestCase
     use RefreshDatabase;
 
     private CancelOrderUseCase $useCase;
+
     private OrderRepositoryInterface $orderRepo;
+
     private ProductRepositoryInterface $productRepo;
 
     protected function setUp(): void

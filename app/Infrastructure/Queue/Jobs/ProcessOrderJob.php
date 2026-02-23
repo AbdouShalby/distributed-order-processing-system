@@ -23,6 +23,7 @@ class ProcessOrderJob implements ShouldQueue
 
     /**
      * Exponential backoff in seconds.
+     *
      * @return int[]
      */
     public function backoff(): array

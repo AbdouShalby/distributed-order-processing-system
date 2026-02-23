@@ -80,6 +80,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: coverage.xml
+          flags: unit
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -148,6 +149,18 @@ jobs:
 
       - name: Run Feature Tests
         run: php artisan test --testsuite=Feature
+
+      - name: Generate Coverage Report (Feature Tests)
+        run: php artisan test --testsuite=Feature --coverage-clover=coverage-feature.xml
+
+      - name: Upload Coverage to Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage-feature.xml
+          flags: feature
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   # ─── Docker Build ────────────────────────────
   docker-build:
